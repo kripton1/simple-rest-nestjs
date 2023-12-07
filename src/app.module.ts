@@ -3,6 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { UsersModule } from './users/users.module';
+import { PostsModule } from './posts/posts.module';
 import * as Joi from 'joi';
 
 @Module({
@@ -17,7 +19,6 @@ import * as Joi from 'joi';
         MYSQL_USER: Joi.string().required(),
         MYSQL_PASSWORD: Joi.string().required(),
       }),
-
     }),
     SequelizeModule.forRootAsync({
       imports: [ConfigModule],
@@ -28,11 +29,14 @@ import * as Joi from 'joi';
         database: configService.get<string>('MYSQL_DB'),
         username: configService.get<string>('MYSQL_USER'),
         password: configService.get<string>('MYSQL_PASSWORD'),
-        models: [],
+        models: [__dirname + '/**/*.model.ts'],
         synchronize: true,
+        autoLoadModels: true,
       }),
       inject: [ConfigService],
-    })
+    }),
+    UsersModule,
+    PostsModule
   ],
   controllers: [AppController],
   providers: [AppService],
