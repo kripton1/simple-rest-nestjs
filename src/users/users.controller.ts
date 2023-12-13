@@ -8,7 +8,7 @@ import { v4 } from 'uuid';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {
     /* this.usersService.create({
-      id: v4(),
+      // id: v4(),
       first_name: 'Test',
       last_name: 'Test',
       email: 'test@gmail.com',

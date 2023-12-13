@@ -9,6 +9,7 @@ export class User extends Model {
     @PrimaryKey
     @Unique
     @Index
+    @Default(DataType.UUIDV4)
     @Column
     id: string;
 

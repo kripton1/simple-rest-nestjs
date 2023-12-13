@@ -29,7 +29,10 @@ import * as Joi from 'joi';
         database: configService.get<string>('MYSQL_DB'),
         username: configService.get<string>('MYSQL_USER'),
         password: configService.get<string>('MYSQL_PASSWORD'),
-        models: [__dirname + '/**/*.model.ts'],
+        models: [__dirname + '/entities/**/*.model.ts'],
+        modelMatch: (filename, member) => {
+          return filename.substring(0, filename.indexOf('.model')) === member.toLowerCase();
+        },
         synchronize: true,
         autoLoadModels: true,
       }),
