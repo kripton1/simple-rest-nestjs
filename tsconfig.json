@@ -16,6 +16,20 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@app/enums": [
+        "libs/enums/src"
+      ],
+      "@app/enums/*": [
+        "libs/enums/src/*"
+      ],
+      "@app/crypto": [
+        "libs/crypto/src"
+      ],
+      "@app/crypto/*": [
+        "libs/crypto/src/*"
+      ]
+    }
   }
 }
